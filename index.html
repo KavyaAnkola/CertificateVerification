@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate Verification</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Blockchain credential platform</p>
+          <h1>Certificate Verification</h1>
+          <p class="subtitle">Issue trusted certificates and verify them directly from the blockchain.</p>
+        </div>
+      </header>
+      <section id="loginPanel" class="panel login-panel">
+        <p class="eyebrow">Secure access</p>
+        <h2>Sign in with MetaMask</h2>
+        <p class="muted">Connect your wallet to access certificate services.</p>
+        <div><h2>Connect your contract</h2><p class="muted">Paste the deployed CertificateVerification contract address.</p></div>
+        <div class="setup-row"><input id="contractAddress" type="text" autocomplete="off" /><button id="saveAddressButton" class="button secondary">Save address</button></div>
+        <p id="status" class="status">Not connected</p>
+        <button id="connectButton" class="button primary full">Connect MetaMask</button>
+      </section>
+      <section id="appShell" class="hidden">
+        <div class="panel account-bar">
+          <div><p class="eyebrow">Authenticated wallet</p><strong id="walletLabel"></strong><p id="roleLabel" class="muted"></p></div>
+          <button id="disconnectButton" class="button secondary">Log out</button>
+        </div>
+        <div id="modeButtons" class="mode-buttons hidden">
+          <button id="showAddButton" class="button primary">Add Certificate</button>
+          <button id="showVerifyButton" class="button secondary">Verify Certificate</button>
+        </div>
+        <div class="grid">
+        <section id="addPanel" class="panel">
+          <div class="section-heading"><div><p class="eyebrow">Issuer</p><h2>Add certificate</h2></div><span class="badge">Owner only</span></div>
+          <form id="addCertificateForm">
+            <label>Certificate ID<input id="certificateId" required /></label>
+            <label>Student name<input id="studentName" required /></label>
+            <label>Registration number<input id="registrationNumber" required /></label>
+            <label>Course<input id="course" required /></label>
+            <label>Issue date<input id="issueDate" required /></label>
+            <label>Certificate hash<input id="certificateHash" required /></label>
+            <button class="button primary full" type="submit">Add certificate</button>
+          </form>
+        </section>
+        <section id="verifyPanel" class="panel">
+          <div class="section-heading"><div><p class="eyebrow">Verifier</p><h2>Verify certificate</h2></div><span id="verificationBadge" class="badge neutral">Waiting</span></div>
+          <form id="verifyCertificateForm">
+            <label>Certificate ID<input id="verifyId" required /></label>
+            <label>Certificate hash<input id="verifyHash" required /></label>
+            <button class="button secondary full" type="submit">Verify hash</button>
+          </form>
+          <div id="certificateDetails" class="details hidden"></div>
+        </section>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

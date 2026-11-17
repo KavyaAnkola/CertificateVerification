@@ -1,3 +1,19 @@
 node_modules/
 .env
+.env.*
+!.env.example
 .DS_Store
+
+# Local blockchain data and generated build output
+ganache-data/
+artifacts/
+build/
+cache/
+deployments/
+
+# Logs, local secrets, and private keys
+*.log
+*.key
+*.pem
+*.secret
+secrets/
